@@ -15,8 +15,11 @@
 #define GOOGLE_PROTOBUF_COMPILER_JAVA_GENERATOR_H__
 
 #include <string>
+#include <vector>
 
 #include "google/protobuf/compiler/code_generator.h"
+#include "google/protobuf/cpp_features.pb.h"
+#include "google/protobuf/descriptor.h"
 
 // Must be included last.
 #include "google/protobuf/port_def.inc"
@@ -45,6 +48,12 @@ class PROTOC_EXPORT JavaGenerator : public CodeGenerator {
 
   void set_opensource_runtime(bool opensource) {
     opensource_runtime_ = opensource;
+  }
+
+  std::vector<const FieldDescriptor*> GetFeatureExtensions() const override {
+    // TODO Required to get legacy_enum_field_treated_as_closed
+    // working in proto2.
+    return {GetExtensionReflection(pb::cpp)};
   }
 
  private:
