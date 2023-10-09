@@ -767,6 +767,9 @@ class PROTOBUF_EXPORT TextFormat {
   template <typename... T>
   static void OutOfLinePrintString(BaseTextGenerator* generator,
                                    const T&... values);
+  template <size_t n>
+  static void OutOfLinePrintLiteral(BaseTextGenerator* generator,
+                                    const char (&literal)[n]);
 };
 
 

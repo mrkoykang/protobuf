@@ -2759,6 +2759,12 @@ PROTOBUF_NOINLINE void TextFormat::OutOfLinePrintString(
   generator->PrintString(absl::StrCat(values...));
 }
 
+template <size_t n>
+PROTOBUF_NOINLINE void TextFormat::OutOfLinePrintLiteral(
+    BaseTextGenerator* generator, const char (&literal)[n]) {
+  generator->PrintLiteral(literal);
+}
+
 void TextFormat::Printer::PrintUnknownFields(
     const UnknownFieldSet& unknown_fields, BaseTextGenerator* generator,
     int recursion_budget) const {
@@ -2771,9 +2777,9 @@ void TextFormat::Printer::PrintUnknownFields(
         generator->PrintMaybeWithMarker(MarkerToken(), ": ");
         OutOfLinePrintString(generator, field.varint());
         if (single_line_mode_) {
-          generator->PrintLiteral(" ");
+          OutOfLinePrintLiteral(generator, " ");
         } else {
-          generator->PrintLiteral("\n");
+          OutOfLinePrintLiteral(generator, "\n");
         }
         break;
       case UnknownField::TYPE_FIXED32: {
@@ -2782,9 +2788,9 @@ void TextFormat::Printer::PrintUnknownFields(
         OutOfLinePrintString(generator,
                              absl::Hex(field.fixed32(), absl::kZeroPad8));
         if (single_line_mode_) {
-          generator->PrintLiteral(" ");
+          OutOfLinePrintLiteral(generator, " ");
         } else {
-          generator->PrintLiteral("\n");
+          OutOfLinePrintLiteral(generator, "\n");
         }
         break;
       }
@@ -2794,9 +2800,9 @@ void TextFormat::Printer::PrintUnknownFields(
         OutOfLinePrintString(generator,
                              absl::Hex(field.fixed64(), absl::kZeroPad16));
         if (single_line_mode_) {
-          generator->PrintLiteral(" ");
+          OutOfLinePrintLiteral(generator, " ");
         } else {
-          generator->PrintLiteral("\n");
+          OutOfLinePrintLiteral(generator, "\n");
         }
         break;
       }
@@ -2834,9 +2840,9 @@ void TextFormat::Printer::PrintUnknownFields(
           generator->PrintMaybeWithMarker(MarkerToken(), ": ", "\"");
           generator->PrintString(absl::CEscape(value));
           if (single_line_mode_) {
-            generator->PrintLiteral("\" ");
+            OutOfLinePrintLiteral(generator, "\" ");
           } else {
-            generator->PrintLiteral("\"\n");
+            OutOfLinePrintLiteral(generator, "\"\n");
           }
         }
         break;
@@ -2854,10 +2860,10 @@ void TextFormat::Printer::PrintUnknownFields(
         // already rejected the message when we originally parsed it.
         PrintUnknownFields(field.group(), generator, recursion_budget - 1);
         if (single_line_mode_) {
-          generator->PrintLiteral("} ");
+          OutOfLinePrintLiteral(generator, "} ");
         } else {
           generator->Outdent();
-          generator->PrintLiteral("}\n");
+          OutOfLinePrintLiteral(generator, "}\n");
         }
         break;
     }
