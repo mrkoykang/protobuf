@@ -16,6 +16,7 @@
 #include <limits>
 #include <string>
 
+#include "absl/base/prefetch.h"
 #include "absl/log/absl_check.h"
 #include "google/protobuf/arena.h"
 #include "google/protobuf/implicit_weak_message.h"
@@ -34,7 +35,7 @@ void** RepeatedPtrFieldBase::InternalExtend(int extend_amount) {
   ABSL_DCHECK(extend_amount > 0);
   constexpr size_t ptr_size = sizeof(rep()->elements[0]);
   int new_capacity = total_size_ + extend_amount;
-  Arena* arena = GetArena();
+  Arena* arena = GetOwningArena();
   new_capacity = internal::CalculateReserveSize<void*, kRepHeaderSize>(
       total_size_, new_capacity);
   ABSL_CHECK_LE(
@@ -90,7 +91,6 @@ void RepeatedPtrFieldBase::DestroyProtos() {
   ABSL_DCHECK(arena_ == nullptr);
   if (using_sso()) {
     delete static_cast<MessageLite*>(tagged_rep_or_elem_);
-
   } else {
     Rep* r = rep();
     int n = r->allocated_size;
@@ -100,8 +100,11 @@ void RepeatedPtrFieldBase::DestroyProtos() {
     }
     const size_t size = total_size_ * sizeof(elements[0]) + kRepHeaderSize;
     internal::SizedDelete(r, size);
-    tagged_rep_or_elem_ = nullptr;
   }
+
+  // TODO:  Eliminate this store when invoked from the destructor,
+  // since it is dead.
+  tagged_rep_or_elem_ = nullptr;
 }
 
 void* RepeatedPtrFieldBase::AddOutOfLineHelper(void* obj) {
@@ -118,6 +121,32 @@ void* RepeatedPtrFieldBase::AddOutOfLineHelper(void* obj) {
   Rep* r = rep();
   ++r->allocated_size;
   return r->elements[ExchangeCurrentSize(current_size_ + 1)] = obj;
+}
+
+void* RepeatedPtrFieldBase::AddOutOfLineHelper(ElementFactory factory) {
+  if (tagged_rep_or_elem_ == nullptr) {
+    ExchangeCurrentSize(1);
+    tagged_rep_or_elem_ = factory(GetArena());
+    return tagged_rep_or_elem_;
+  }
+  if (using_sso()) {
+    if (ExchangeCurrentSize(1) == 0) return tagged_rep_or_elem_;
+  } else {
+    absl::PrefetchToLocalCache(rep());
+  }
+  if (PROTOBUF_PREDICT_FALSE(current_size_ == total_size_)) {
+    InternalExtend(1);
+  } else {
+    Rep* r = rep();
+    if (current_size_ != r->allocated_size) {
+      return r->elements[ExchangeCurrentSize(current_size_ + 1)];
+    }
+  }
+  Rep* r = rep();
+  ++r->allocated_size;
+  void*& result = r->elements[ExchangeCurrentSize(current_size_ + 1)];
+  result = factory(GetArena());
+  return result;
 }
 
 void RepeatedPtrFieldBase::CloseGap(int start, int num) {
@@ -205,7 +234,7 @@ void RepeatedPtrFieldBase::MergeFromConcreteMessage(
     dst += recycled;
     src += recycled;
   }
-  Arena* arena = GetArena();
+  Arena* arena = GetOwningArena();
   for (; src < end; ++src, ++dst) {
     *dst = copy_fn(arena, **src);
   }
@@ -228,7 +257,7 @@ void RepeatedPtrFieldBase::MergeFrom<MessageLite>(
     dst += recycled;
     src += recycled;
   }
-  Arena* arena = GetArena();
+  Arena* arena = GetOwningArena();
   for (; src < end; ++src, ++dst) {
     *dst = (*src)->New(arena);
     (*dst)->CheckTypeAndMergeFrom(**src);

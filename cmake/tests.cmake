@@ -15,7 +15,6 @@ set(tests_protos
   ${protobuf_test_protos_files}
   ${compiler_test_protos_files}
   ${util_test_protos_files}
-  ${lite_test_protos}
 )
 
 set(protoc_cpp_args)
@@ -120,6 +119,7 @@ if (MSVC)
 endif()
 target_link_libraries(tests
   libtest_common
+  libtest_common_lite
   ${protobuf_LIB_PROTOC}
   ${protobuf_LIB_PROTOBUF}
   ${protobuf_ABSL_USED_TARGETS}
@@ -131,6 +131,7 @@ add_executable(fake_plugin ${fake_plugin_files} ${common_test_files})
 target_include_directories(fake_plugin PRIVATE ${ABSL_ROOT_DIR})
 target_link_libraries(fake_plugin
   libtest_common
+  libtest_common_lite
   ${protobuf_LIB_PROTOC}
   ${protobuf_LIB_PROTOBUF}
   ${protobuf_ABSL_USED_TARGETS}
@@ -142,6 +143,7 @@ add_executable(test_plugin ${test_plugin_files} ${common_test_files})
 target_include_directories(test_plugin PRIVATE ${ABSL_ROOT_DIR})
 target_link_libraries(test_plugin
   libtest_common
+  libtest_common_lite
   ${protobuf_LIB_PROTOC}
   ${protobuf_LIB_PROTOBUF}
   ${protobuf_ABSL_USED_TARGETS}
@@ -204,7 +206,8 @@ file(GLOB_RECURSE _local_hdrs
 set(_exclude_hdrs
   "${protobuf_SOURCE_DIR}/src/google/protobuf/cpp_features.pb.h"
   "${protobuf_SOURCE_DIR}/src/google/protobuf/descriptor.pb.h"
-  "${protobuf_SOURCE_DIR}/src/google/protobuf/compiler/plugin.pb.h")
+  "${protobuf_SOURCE_DIR}/src/google/protobuf/compiler/plugin.pb.h"
+  "${protobuf_SOURCE_DIR}/src/google/protobuf/compiler/java/java_features.pb.h")
 
 # Exclude test library headers.
 list(APPEND _exclude_hdrs ${test_util_hdrs} ${lite_test_util_hdrs} ${common_test_hdrs}

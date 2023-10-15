@@ -7229,7 +7229,7 @@ class FeaturesTest : public FeaturesBaseTest {
         {GetExtensionReflection(pb::cpp), GetExtensionReflection(pb::test),
          GetExtensionReflection(pb::TestMessage::test_message),
          GetExtensionReflection(pb::TestMessage::Nested::test_nested)},
-        EDITION_2023, EDITION_99999_TEST_ONLY);
+        EDITION_PROTO2, EDITION_99999_TEST_ONLY);
     ASSERT_OK(default_spec);
     pool_.SetFeatureSetDefaults(std::move(default_spec).value());
   }
@@ -7312,27 +7312,28 @@ TEST_F(FeaturesTest, Proto2Features) {
   const FieldDescriptor* field = message->field(0);
   const FieldDescriptor* group = message->field(1);
   EXPECT_THAT(file->options(), EqualsProto(""));
-  EXPECT_THAT(GetFeatures(file), EqualsProto(R"pb(
+  EXPECT_EQ(GetFeatures(file).GetExtension(pb::test).int_file_feature(), -2);
+  EXPECT_THAT(GetCoreFeatures(file), EqualsProto(R"pb(
                 field_presence: EXPLICIT
                 enum_type: CLOSED
                 repeated_field_encoding: EXPANDED
-                utf8_validation: UNVERIFIED
+                utf8_validation: NONE
                 message_encoding: LENGTH_PREFIXED
                 json_format: LEGACY_BEST_EFFORT
                 [pb.cpp] { legacy_closed_enum: true })pb"));
-  EXPECT_THAT(GetFeatures(field), EqualsProto(R"pb(
+  EXPECT_THAT(GetCoreFeatures(field), EqualsProto(R"pb(
                 field_presence: EXPLICIT
                 enum_type: CLOSED
                 repeated_field_encoding: EXPANDED
-                utf8_validation: UNVERIFIED
+                utf8_validation: NONE
                 message_encoding: LENGTH_PREFIXED
                 json_format: LEGACY_BEST_EFFORT
                 [pb.cpp] { legacy_closed_enum: true })pb"));
-  EXPECT_THAT(GetFeatures(group), EqualsProto(R"pb(
+  EXPECT_THAT(GetCoreFeatures(group), EqualsProto(R"pb(
                 field_presence: EXPLICIT
                 enum_type: CLOSED
                 repeated_field_encoding: EXPANDED
-                utf8_validation: UNVERIFIED
+                utf8_validation: NONE
                 message_encoding: DELIMITED
                 json_format: LEGACY_BEST_EFFORT
                 [pb.cpp] { legacy_closed_enum: true })pb"));
@@ -7385,7 +7386,8 @@ TEST_F(FeaturesTest, Proto3Features) {
   const Descriptor* message = file->message_type(0);
   const FieldDescriptor* field = message->field(0);
   EXPECT_THAT(file->options(), EqualsProto(""));
-  EXPECT_THAT(GetFeatures(file), EqualsProto(R"pb(
+  EXPECT_EQ(GetFeatures(file).GetExtension(pb::test).int_file_feature(), -3);
+  EXPECT_THAT(GetCoreFeatures(file), EqualsProto(R"pb(
                 field_presence: IMPLICIT
                 enum_type: OPEN
                 repeated_field_encoding: PACKED
@@ -7393,7 +7395,7 @@ TEST_F(FeaturesTest, Proto3Features) {
                 message_encoding: LENGTH_PREFIXED
                 json_format: ALLOW
                 [pb.cpp] { legacy_closed_enum: false })pb"));
-  EXPECT_THAT(GetFeatures(field), EqualsProto(R"pb(
+  EXPECT_THAT(GetCoreFeatures(field), EqualsProto(R"pb(
                 field_presence: IMPLICIT
                 enum_type: OPEN
                 repeated_field_encoding: PACKED
@@ -7962,7 +7964,7 @@ TEST_F(FeaturesTest, InvalidEdition) {
         name: "foo.proto" syntax: "editions" edition: EDITION_1_TEST_ONLY
       )pb",
       "foo.proto: foo.proto: EDITIONS: Edition 1_TEST_ONLY is earlier than the "
-      "minimum supported edition 2023\n");
+      "minimum supported edition PROTO2\n");
 }
 
 TEST_F(FeaturesTest, FileFeatures) {
@@ -8399,13 +8401,13 @@ TEST_F(FeaturesTest, MapFieldFeaturesStringValidation) {
 
     message Foo {
       map<string, string> map_field = 1 [
-        features.utf8_validation = UNVERIFIED
+        features.utf8_validation = NONE
       ];
       map<int32, string> map_field_value = 2 [
-        features.utf8_validation = UNVERIFIED
+        features.utf8_validation = NONE
       ];
       map<string, int32> map_field_key = 3 [
-        features.utf8_validation = UNVERIFIED
+        features.utf8_validation = NONE
       ];
     }
   )schema";
@@ -9114,7 +9116,7 @@ TEST_F(FeaturesTest, FieldFeatureHelpers) {
         number: 7
         label: LABEL_REPEATED
         type: TYPE_STRING
-        options { features { utf8_validation: UNVERIFIED } }
+        options { features { utf8_validation: NONE } }
       }
     }
   )pb");
@@ -9256,6 +9258,18 @@ TEST_F(FeaturesTest, FeaturesOutsideEditions) {
       "editions.\n");
 }
 
+TEST_F(FeaturesTest, InvalidRequiredByDefault) {
+  BuildDescriptorMessagesInTestPool();
+  BuildFileWithErrors(
+      R"pb(
+        name: "foo.proto"
+        syntax: "editions"
+        edition: EDITION_2023
+        options { features { field_presence: LEGACY_REQUIRED } }
+      )pb",
+      "foo.proto: foo.proto: EDITIONS: Required presence can't be specified "
+      "by default.\n");
+}
 TEST_F(FeaturesTest, InvalidFieldPacked) {
   BuildDescriptorMessagesInTestPool();
   BuildFileWithErrors(
@@ -9532,7 +9546,7 @@ TEST_F(FeaturesTest, InvalidFieldNonStringWithStringValidation) {
             number: 1
             label: LABEL_OPTIONAL
             type: TYPE_INT64
-            options { features { utf8_validation: UNVERIFIED } }
+            options { features { utf8_validation: NONE } }
           }
         }
       )pb",
@@ -9560,7 +9574,7 @@ TEST_F(FeaturesTest, InvalidFieldNonStringMapWithStringValidation) {
                 uninterpreted_option {
                   name { name_part: "features" is_extension: false }
                   name { name_part: "utf8_validation" is_extension: false }
-                  identifier_value: "UNVERIFIED"
+                  identifier_value: "NONE"
                 }
               }
             }
@@ -9573,7 +9587,7 @@ TEST_F(FeaturesTest, InvalidFieldNonStringMapWithStringValidation) {
                 uninterpreted_option {
                   name { name_part: "features" is_extension: false }
                   name { name_part: "utf8_validation" is_extension: false }
-                  identifier_value: "UNVERIFIED"
+                  identifier_value: "NONE"
                 }
               }
             }
@@ -9588,7 +9602,7 @@ TEST_F(FeaturesTest, InvalidFieldNonStringMapWithStringValidation) {
               uninterpreted_option {
                 name { name_part: "features" is_extension: false }
                 name { name_part: "utf8_validation" is_extension: false }
-                identifier_value: "UNVERIFIED"
+                identifier_value: "NONE"
               }
             }
           }

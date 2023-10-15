@@ -79,8 +79,8 @@ namespace Google.Protobuf.Reflection {
             "RV9NRVNTQUdFEAsSDgoKVFlQRV9CWVRFUxAMEg8KC1RZUEVfVUlOVDMyEA0S",
             "DQoJVFlQRV9FTlVNEA4SEQoNVFlQRV9TRklYRUQzMhAPEhEKDVRZUEVfU0ZJ",
             "WEVENjQQEBIPCgtUWVBFX1NJTlQzMhAREg8KC1RZUEVfU0lOVDY0EBIiQwoF",
-            "TGFiZWwSEgoOTEFCRUxfT1BUSU9OQUwQARISCg5MQUJFTF9SRVFVSVJFRBAC",
-            "EhIKDkxBQkVMX1JFUEVBVEVEEAMiVAoUT25lb2ZEZXNjcmlwdG9yUHJvdG8S",
+            "TGFiZWwSEgoOTEFCRUxfT1BUSU9OQUwQARISCg5MQUJFTF9SRVBFQVRFRBAD",
+            "EhIKDkxBQkVMX1JFUVVJUkVEEAIiVAoUT25lb2ZEZXNjcmlwdG9yUHJvdG8S",
             "DAoEbmFtZRgBIAEoCRIuCgdvcHRpb25zGAIgASgLMh0uZ29vZ2xlLnByb3Rv",
             "YnVmLk9uZW9mT3B0aW9ucyKkAgoTRW51bURlc2NyaXB0b3JQcm90bxIMCgRu",
             "YW1lGAEgASgJEjgKBXZhbHVlGAIgAygLMikuZ29vZ2xlLnByb3RvYnVmLkVu",
@@ -183,7 +183,7 @@ namespace Google.Protobuf.Reflection {
             "GgoSbmVnYXRpdmVfaW50X3ZhbHVlGAUgASgDEhQKDGRvdWJsZV92YWx1ZRgG",
             "IAEoARIUCgxzdHJpbmdfdmFsdWUYByABKAwSFwoPYWdncmVnYXRlX3ZhbHVl",
             "GAggASgJGjMKCE5hbWVQYXJ0EhEKCW5hbWVfcGFydBgBIAIoCRIUCgxpc19l",
-            "eHRlbnNpb24YAiACKAgiqQkKCkZlYXR1cmVTZXQSfAoOZmllbGRfcHJlc2Vu",
+            "eHRlbnNpb24YAiACKAginQkKCkZlYXR1cmVTZXQSfAoOZmllbGRfcHJlc2Vu",
             "Y2UYASABKA4yKS5nb29nbGUucHJvdG9idWYuRmVhdHVyZVNldC5GaWVsZFBy",
             "ZXNlbmNlQjmIAQGYAQSYAQGiAQ0SCEVYUExJQ0lUGOYHogENEghJTVBMSUNJ",
             "VBjnB6IBDRIIRVhQTElDSVQY6AcSXAoJZW51bV90eXBlGAIgASgOMiQuZ29v",
@@ -191,52 +191,52 @@ namespace Google.Protobuf.Reflection {
             "CxIGQ0xPU0VEGOYHogEJEgRPUEVOGOcHEnsKF3JlcGVhdGVkX2ZpZWxkX2Vu",
             "Y29kaW5nGAMgASgOMjEuZ29vZ2xlLnByb3RvYnVmLkZlYXR1cmVTZXQuUmVw",
             "ZWF0ZWRGaWVsZEVuY29kaW5nQieIAQGYAQSYAQGiAQ0SCEVYUEFOREVEGOYH",
-            "ogELEgZQQUNLRUQY5wcSbgoPdXRmOF92YWxpZGF0aW9uGAQgASgOMiouZ29v",
-            "Z2xlLnByb3RvYnVmLkZlYXR1cmVTZXQuVXRmOFZhbGlkYXRpb25CKYgBAZgB",
-            "BJgBAaIBDxIKVU5WRVJJRklFRBjmB6IBCxIGVkVSSUZZGOcHEmcKEG1lc3Nh",
-            "Z2VfZW5jb2RpbmcYBSABKA4yKy5nb29nbGUucHJvdG9idWYuRmVhdHVyZVNl",
-            "dC5NZXNzYWdlRW5jb2RpbmdCIIgBAZgBBJgBAaIBFBIPTEVOR1RIX1BSRUZJ",
-            "WEVEGOYHEnAKC2pzb25fZm9ybWF0GAYgASgOMiYuZ29vZ2xlLnByb3RvYnVm",
-            "LkZlYXR1cmVTZXQuSnNvbkZvcm1hdEIziAEBmAEDmAEGmAEBogEXEhJMRUdB",
-            "Q1lfQkVTVF9FRkZPUlQY5geiAQoSBUFMTE9XGOcHIlwKDUZpZWxkUHJlc2Vu",
-            "Y2USGgoWRklFTERfUFJFU0VOQ0VfVU5LTk9XThAAEgwKCEVYUExJQ0lUEAES",
-            "DAoISU1QTElDSVQQAhITCg9MRUdBQ1lfUkVRVUlSRUQQAyI3CghFbnVtVHlw",
-            "ZRIVChFFTlVNX1RZUEVfVU5LTk9XThAAEggKBE9QRU4QARIKCgZDTE9TRUQQ",
-            "AiJWChVSZXBlYXRlZEZpZWxkRW5jb2RpbmcSIwofUkVQRUFURURfRklFTERf",
-            "RU5DT0RJTkdfVU5LTk9XThAAEgoKBlBBQ0tFRBABEgwKCEVYUEFOREVEEAIi",
-            "SQoOVXRmOFZhbGlkYXRpb24SGwoXVVRGOF9WQUxJREFUSU9OX1VOS05PV04Q",
-            "ABIOCgpVTlZFUklGSUVEEAESCgoGVkVSSUZZEAIiUwoPTWVzc2FnZUVuY29k",
-            "aW5nEhwKGE1FU1NBR0VfRU5DT0RJTkdfVU5LTk9XThAAEhMKD0xFTkdUSF9Q",
-            "UkVGSVhFRBABEg0KCURFTElNSVRFRBACIkgKCkpzb25Gb3JtYXQSFwoTSlNP",
-            "Tl9GT1JNQVRfVU5LTk9XThAAEgkKBUFMTE9XEAESFgoSTEVHQUNZX0JFU1Rf",
-            "RUZGT1JUEAIqBgjoBxDpByoGCOkHEOoHKgYIi04QkE5KBgjnBxDoByLAAgoS",
-            "RmVhdHVyZVNldERlZmF1bHRzEk4KCGRlZmF1bHRzGAEgAygLMjwuZ29vZ2xl",
-            "LnByb3RvYnVmLkZlYXR1cmVTZXREZWZhdWx0cy5GZWF0dXJlU2V0RWRpdGlv",
-            "bkRlZmF1bHQSMQoPbWluaW11bV9lZGl0aW9uGAQgASgOMhguZ29vZ2xlLnBy",
-            "b3RvYnVmLkVkaXRpb24SMQoPbWF4aW11bV9lZGl0aW9uGAUgASgOMhguZ29v",
-            "Z2xlLnByb3RvYnVmLkVkaXRpb24adAoYRmVhdHVyZVNldEVkaXRpb25EZWZh",
-            "dWx0EikKB2VkaXRpb24YAyABKA4yGC5nb29nbGUucHJvdG9idWYuRWRpdGlv",
-            "bhItCghmZWF0dXJlcxgCIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GZWF0dXJl",
-            "U2V0ItUBCg5Tb3VyY2VDb2RlSW5mbxI6Cghsb2NhdGlvbhgBIAMoCzIoLmdv",
-            "b2dsZS5wcm90b2J1Zi5Tb3VyY2VDb2RlSW5mby5Mb2NhdGlvbhqGAQoITG9j",
-            "YXRpb24SEAoEcGF0aBgBIAMoBUICEAESEAoEc3BhbhgCIAMoBUICEAESGAoQ",
-            "bGVhZGluZ19jb21tZW50cxgDIAEoCRIZChF0cmFpbGluZ19jb21tZW50cxgE",
-            "IAEoCRIhChlsZWFkaW5nX2RldGFjaGVkX2NvbW1lbnRzGAYgAygJIpwCChFH",
-            "ZW5lcmF0ZWRDb2RlSW5mbxJBCgphbm5vdGF0aW9uGAEgAygLMi0uZ29vZ2xl",
-            "LnByb3RvYnVmLkdlbmVyYXRlZENvZGVJbmZvLkFubm90YXRpb24awwEKCkFu",
-            "bm90YXRpb24SEAoEcGF0aBgBIAMoBUICEAESEwoLc291cmNlX2ZpbGUYAiAB",
-            "KAkSDQoFYmVnaW4YAyABKAUSCwoDZW5kGAQgASgFEkgKCHNlbWFudGljGAUg",
-            "ASgOMjYuZ29vZ2xlLnByb3RvYnVmLkdlbmVyYXRlZENvZGVJbmZvLkFubm90",
-            "YXRpb24uU2VtYW50aWMiKAoIU2VtYW50aWMSCAoETk9ORRAAEgcKA1NFVBAB",
-            "EgkKBUFMSUFTEAIq6gEKB0VkaXRpb24SEwoPRURJVElPTl9VTktOT1dOEAAS",
-            "EwoORURJVElPTl9QUk9UTzIQ5gcSEwoORURJVElPTl9QUk9UTzMQ5wcSEQoM",
-            "RURJVElPTl8yMDIzEOgHEhcKE0VESVRJT05fMV9URVNUX09OTFkQARIXChNF",
-            "RElUSU9OXzJfVEVTVF9PTkxZEAISHQoXRURJVElPTl85OTk5N19URVNUX09O",
-            "TFkQnY0GEh0KF0VESVRJT05fOTk5OThfVEVTVF9PTkxZEJ6NBhIdChdFRElU",
-            "SU9OXzk5OTk5X1RFU1RfT05MWRCfjQZCfgoTY29tLmdvb2dsZS5wcm90b2J1",
-            "ZkIQRGVzY3JpcHRvclByb3Rvc0gBWi1nb29nbGUuZ29sYW5nLm9yZy9wcm90",
-            "b2J1Zi90eXBlcy9kZXNjcmlwdG9ycGL4AQGiAgNHUEKqAhpHb29nbGUuUHJv",
-            "dG9idWYuUmVmbGVjdGlvbg=="));
+            "ogELEgZQQUNLRUQY5wcSaAoPdXRmOF92YWxpZGF0aW9uGAQgASgOMiouZ29v",
+            "Z2xlLnByb3RvYnVmLkZlYXR1cmVTZXQuVXRmOFZhbGlkYXRpb25CI4gBAZgB",
+            "BJgBAaIBCRIETk9ORRjmB6IBCxIGVkVSSUZZGOcHEmcKEG1lc3NhZ2VfZW5j",
+            "b2RpbmcYBSABKA4yKy5nb29nbGUucHJvdG9idWYuRmVhdHVyZVNldC5NZXNz",
+            "YWdlRW5jb2RpbmdCIIgBAZgBBJgBAaIBFBIPTEVOR1RIX1BSRUZJWEVEGOYH",
+            "EnAKC2pzb25fZm9ybWF0GAYgASgOMiYuZ29vZ2xlLnByb3RvYnVmLkZlYXR1",
+            "cmVTZXQuSnNvbkZvcm1hdEIziAEBmAEDmAEGmAEBogEXEhJMRUdBQ1lfQkVT",
+            "VF9FRkZPUlQY5geiAQoSBUFMTE9XGOcHIlwKDUZpZWxkUHJlc2VuY2USGgoW",
+            "RklFTERfUFJFU0VOQ0VfVU5LTk9XThAAEgwKCEVYUExJQ0lUEAESDAoISU1Q",
+            "TElDSVQQAhITCg9MRUdBQ1lfUkVRVUlSRUQQAyI3CghFbnVtVHlwZRIVChFF",
+            "TlVNX1RZUEVfVU5LTk9XThAAEggKBE9QRU4QARIKCgZDTE9TRUQQAiJWChVS",
+            "ZXBlYXRlZEZpZWxkRW5jb2RpbmcSIwofUkVQRUFURURfRklFTERfRU5DT0RJ",
+            "TkdfVU5LTk9XThAAEgoKBlBBQ0tFRBABEgwKCEVYUEFOREVEEAIiQwoOVXRm",
+            "OFZhbGlkYXRpb24SGwoXVVRGOF9WQUxJREFUSU9OX1VOS05PV04QABIICgRO",
+            "T05FEAESCgoGVkVSSUZZEAIiUwoPTWVzc2FnZUVuY29kaW5nEhwKGE1FU1NB",
+            "R0VfRU5DT0RJTkdfVU5LTk9XThAAEhMKD0xFTkdUSF9QUkVGSVhFRBABEg0K",
+            "CURFTElNSVRFRBACIkgKCkpzb25Gb3JtYXQSFwoTSlNPTl9GT1JNQVRfVU5L",
+            "Tk9XThAAEgkKBUFMTE9XEAESFgoSTEVHQUNZX0JFU1RfRUZGT1JUEAIqBgjo",
+            "BxDpByoGCOkHEOoHKgYIi04QkE5KBgjnBxDoByLAAgoSRmVhdHVyZVNldERl",
+            "ZmF1bHRzEk4KCGRlZmF1bHRzGAEgAygLMjwuZ29vZ2xlLnByb3RvYnVmLkZl",
+            "YXR1cmVTZXREZWZhdWx0cy5GZWF0dXJlU2V0RWRpdGlvbkRlZmF1bHQSMQoP",
+            "bWluaW11bV9lZGl0aW9uGAQgASgOMhguZ29vZ2xlLnByb3RvYnVmLkVkaXRp",
+            "b24SMQoPbWF4aW11bV9lZGl0aW9uGAUgASgOMhguZ29vZ2xlLnByb3RvYnVm",
+            "LkVkaXRpb24adAoYRmVhdHVyZVNldEVkaXRpb25EZWZhdWx0EikKB2VkaXRp",
+            "b24YAyABKA4yGC5nb29nbGUucHJvdG9idWYuRWRpdGlvbhItCghmZWF0dXJl",
+            "cxgCIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GZWF0dXJlU2V0ItUBCg5Tb3Vy",
+            "Y2VDb2RlSW5mbxI6Cghsb2NhdGlvbhgBIAMoCzIoLmdvb2dsZS5wcm90b2J1",
+            "Zi5Tb3VyY2VDb2RlSW5mby5Mb2NhdGlvbhqGAQoITG9jYXRpb24SEAoEcGF0",
+            "aBgBIAMoBUICEAESEAoEc3BhbhgCIAMoBUICEAESGAoQbGVhZGluZ19jb21t",
+            "ZW50cxgDIAEoCRIZChF0cmFpbGluZ19jb21tZW50cxgEIAEoCRIhChlsZWFk",
+            "aW5nX2RldGFjaGVkX2NvbW1lbnRzGAYgAygJIpwCChFHZW5lcmF0ZWRDb2Rl",
+            "SW5mbxJBCgphbm5vdGF0aW9uGAEgAygLMi0uZ29vZ2xlLnByb3RvYnVmLkdl",
+            "bmVyYXRlZENvZGVJbmZvLkFubm90YXRpb24awwEKCkFubm90YXRpb24SEAoE",
+            "cGF0aBgBIAMoBUICEAESEwoLc291cmNlX2ZpbGUYAiABKAkSDQoFYmVnaW4Y",
+            "AyABKAUSCwoDZW5kGAQgASgFEkgKCHNlbWFudGljGAUgASgOMjYuZ29vZ2xl",
+            "LnByb3RvYnVmLkdlbmVyYXRlZENvZGVJbmZvLkFubm90YXRpb24uU2VtYW50",
+            "aWMiKAoIU2VtYW50aWMSCAoETk9ORRAAEgcKA1NFVBABEgkKBUFMSUFTEAIq",
+            "6gEKB0VkaXRpb24SEwoPRURJVElPTl9VTktOT1dOEAASEwoORURJVElPTl9Q",
+            "Uk9UTzIQ5gcSEwoORURJVElPTl9QUk9UTzMQ5wcSEQoMRURJVElPTl8yMDIz",
+            "EOgHEhcKE0VESVRJT05fMV9URVNUX09OTFkQARIXChNFRElUSU9OXzJfVEVT",
+            "VF9PTkxZEAISHQoXRURJVElPTl85OTk5N19URVNUX09OTFkQnY0GEh0KF0VE",
+            "SVRJT05fOTk5OThfVEVTVF9PTkxZEJ6NBhIdChdFRElUSU9OXzk5OTk5X1RF",
+            "U1RfT05MWRCfjQZCfgoTY29tLmdvb2dsZS5wcm90b2J1ZkIQRGVzY3JpcHRv",
+            "clByb3Rvc0gBWi1nb29nbGUuZ29sYW5nLm9yZy9wcm90b2J1Zi90eXBlcy9k",
+            "ZXNjcmlwdG9ycGL4AQGiAgNHUEKqAhpHb29nbGUuUHJvdG9idWYuUmVmbGVj",
+            "dGlvbg=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Reflection.Edition), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -3837,9 +3837,10 @@ namespace Google.Protobuf.Reflection {
         [pbr::OriginalName("TYPE_STRING")] String = 9,
         /// <summary>
         /// Tag-delimited aggregate.
-        /// Group type is deprecated and not supported in proto3. However, Proto3
+        /// Group type is deprecated and not supported after google.protobuf. However, Proto3
         /// implementations should still be able to parse the group wire format and
-        /// treat group fields as unknown fields.
+        /// treat group fields as unknown fields.  In Editions, the group wire format
+        /// can be enabled via the `message_encoding` feature.
         /// </summary>
         [pbr::OriginalName("TYPE_GROUP")] Group = 10,
         /// <summary>
@@ -3869,8 +3870,13 @@ namespace Google.Protobuf.Reflection {
         /// 0 is reserved for errors
         /// </summary>
         [pbr::OriginalName("LABEL_OPTIONAL")] Optional = 1,
-        [pbr::OriginalName("LABEL_REQUIRED")] Required = 2,
         [pbr::OriginalName("LABEL_REPEATED")] Repeated = 3,
+        /// <summary>
+        /// The required label is only allowed in google.protobuf.  In proto3 and Editions
+        /// it's explicitly prohibited.  In Editions, the `field_presence` feature
+        /// can be used to get this behavior.
+        /// </summary>
+        [pbr::OriginalName("LABEL_REQUIRED")] Required = 2,
       }
 
     }
@@ -7954,7 +7960,9 @@ namespace Google.Protobuf.Reflection {
     /// a more efficient representation on the wire. Rather than repeatedly
     /// writing the tag and type for each element, the entire array is encoded as
     /// a single length-delimited blob. In proto3, only explicit setting it to
-    /// false will avoid using packed encoding.
+    /// false will avoid using packed encoding.  This option is prohibited in
+    /// Editions, but the `repeated_field_encoding` feature can be used to control
+    /// the behavior.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -12248,7 +12256,7 @@ namespace Google.Protobuf.Reflection {
 
       public enum Utf8Validation {
         [pbr::OriginalName("UTF8_VALIDATION_UNKNOWN")] Unknown = 0,
-        [pbr::OriginalName("UNVERIFIED")] Unverified = 1,
+        [pbr::OriginalName("NONE")] None = 1,
         [pbr::OriginalName("VERIFY")] Verify = 2,
       }
 
